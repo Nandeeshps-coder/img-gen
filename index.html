@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiro AI Studio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="app">
+        <nav class="sidebar">
+            <div class="logo">
+                <h2>🎨 Kiro AI Studio</h2>
+                <p>Professional Image Generation</p>
+            </div>
+
+            <form id="imageForm" class="controls">
+                <div class="section">
+                    <h3>API Key</h3>
+                    <div class="api-key-section">
+                        <input type="password" id="apiKey" placeholder="Enter your Hugging Face API key">
+                        <button type="button" id="saveApiKey" class="save-key-btn">Save</button>
+                        <button type="button" id="clearApiKey" class="clear-key-btn">Clear</button>
+                    </div>
+                    <p class="api-key-help">Get your free API key at <a href="https://huggingface.co/settings/tokens" target="_blank">Hugging Face</a></p>
+                </div>
+
+                <div class="section">
+                    <h3>Prompt</h3>
+                    <textarea id="prompt" placeholder="A majestic dragon soaring through clouds at sunset..."
+                        required></textarea>
+                </div>
+
+                <div class="section">
+                    <h3>Model</h3>
+                    <div class="model-grid">
+                        <label class="model-card">
+                            <input type="radio" name="model" value="black-forest-labs/FLUX.1-schnell" checked>
+                            <div class="card-content">
+                                <strong>FLUX.1 Schnell</strong>
+                                <span>Fast & Reliable</span>
+                            </div>
+                        </label>
+                        <label class="model-card">
+                            <input type="radio" name="model" value="black-forest-labs/FLUX.1-dev">
+                            <div class="card-content">
+                                <strong>FLUX.1 Dev</strong>
+                                <span>High Quality</span>
+                            </div>
+                        </label>
+                        <label class="model-card">
+                            <input type="radio" name="model" value="stabilityai/stable-diffusion-xl-base-1.0">
+                            <div class="card-content">
+                                <strong>SD XL</strong>
+                                <span>Classic</span>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Dimensions</h3>
+                    <div class="aspect-grid">
+                        <label class="aspect-card">
+                            <input type="radio" name="aspectRatio" value="1024x1024" checked>
+                            <div class="aspect-preview square"></div>
+                            <span>Square<br>1024×1024</span>
+                        </label>
+                        <label class="aspect-card">
+                            <input type="radio" name="aspectRatio" value="1344x768">
+                            <div class="aspect-preview landscape"></div>
+                            <span>Landscape<br>1344×768</span>
+                        </label>
+                        <label class="aspect-card">
+                            <input type="radio" name="aspectRatio" value="768x1344">
+                            <div class="aspect-preview portrait"></div>
+                            <span>Portrait<br>768×1344</span>
+                        </label>
+                        <label class="aspect-card">
+                            <input type="radio" name="aspectRatio" value="1152x896">
+                            <div class="aspect-preview standard"></div>
+                            <span>Standard<br>1152×896</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h3>Batch Size</h3>
+                    <div class="batch-selector">
+                        <input type="range" id="numImages" min="1" max="4" value="1">
+                        <div class="batch-display">
+                            <span id="numImagesValue">1</span> image(s)
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="generate-btn" id="generateBtn">
+                    <span class="btn-text">Generate Images</span>
+                    <span class="btn-icon">✨</span>
+                </button>
+            </form>
+        </nav>
+
+        <main class="workspace">
+            <div class="workspace-header">
+                <h1>Generated Images</h1>
+                <div class="status" id="status">Ready to create</div>
+            </div>
+
+            <div class="canvas-area" id="results">
+                <div class="empty-state">
+                    <div class="empty-icon">🖼️</div>
+                    <h3>No images yet</h3>
+                    <p>Configure your settings and click "Generate Images" to start creating</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="env.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
